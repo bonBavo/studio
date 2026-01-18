@@ -1,13 +1,12 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useFormStatus } from 'react-dom';
 import { getJobApplicationInsights } from '@/app/job-insights/actions';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Terminal, Lightbulb, CheckCircle, ArrowRight, Loader2, ListChecks, BrainCircuit, Target, BookOpen } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { Card, CardContent, CardTitle } from '@/components/ui/card';
+import { Loader2, ListChecks, BrainCircuit, Target, BookOpen } from 'lucide-react';
+import { useActionState, useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
@@ -27,7 +26,7 @@ function SubmitButton() {
 }
 
 export default function JobInsightsForm() {
-  const [state, formAction] = useFormState(getJobApplicationInsights, initialState);
+  const [state, formAction] = useActionState(getJobApplicationInsights, initialState);
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
 
