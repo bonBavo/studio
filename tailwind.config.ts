@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['"Space Mono"', 'monospace'],
-        headline: ['"Space Grotesk"', 'sans-serif'],
+        body: ['"EB Garamond"', 'serif'],
+        headline: ['"EB Garamond"', 'serif'],
         code: ['monospace'],
       },
       colors: {
