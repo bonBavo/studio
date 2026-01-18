@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Wrench, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { navLinks } from '@/lib/routes';
+import { ThemeToggle } from '../ThemeToggle';
 
 export default function Header() {
   return (
@@ -9,7 +10,7 @@ export default function Header() {
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 group">
           <Wrench className="text-primary group-hover:rotate-[-15deg] transition-transform" />
-          <span className="text-xl font-headline font-bold">Engineer's Workshop</span>
+          <span className="text-xl font-headline font-bold">bonfolio</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
           {navLinks.map((link) => {
@@ -31,6 +32,7 @@ export default function Header() {
               GitHub
             </a>
           </Button>
+          <ThemeToggle />
         </div>
       </div>
     </header>

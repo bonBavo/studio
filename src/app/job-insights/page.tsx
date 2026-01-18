@@ -2,10 +2,11 @@ import MainLayout from '@/components/layout/MainLayout';
 import JobInsightsForm from '@/components/JobInsightsForm';
 import { Sparkles } from 'lucide-react';
 import type { Metadata } from 'next';
+import { siteContent } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: "AI Job Insights | Engineer's Workshop",
-  description: 'Use AI to analyze your resume against a job description and get actionable insights.',
+  title: "AI Job Insights",
+  description: siteContent.jobInsightsPage.subtitle,
 };
 
 export default function JobInsightsPage() {
@@ -15,8 +16,8 @@ export default function JobInsightsPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <Sparkles className="mx-auto h-12 w-12 text-primary" />
-            <h1 className="text-4xl font-headline font-bold mt-4">Automated Job Application Insights</h1>
-            <p className="mt-4 text-lg text-muted-foreground">Paste your resume and a job posting to get AI-powered insights on how to improve your application.</p>
+            <h1 className="text-4xl font-headline font-bold mt-4">{siteContent.jobInsightsPage.title}</h1>
+            <p className="mt-4 text-lg text-muted-foreground">{siteContent.jobInsightsPage.subtitle}</p>
           </div>
           <JobInsightsForm />
         </div>

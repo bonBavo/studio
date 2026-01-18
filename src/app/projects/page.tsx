@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import { siteContent } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: "Projects | Engineer's Workshop",
+  title: "Projects",
   description: siteContent.projectsPage.subtitle,
 };
 

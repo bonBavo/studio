@@ -1,14 +1,14 @@
 export const siteContent = {
   home: {
     hero: {
-      title: "Engineer's Workshop",
-      subtitle: "Crafting robust and elegant software solutions, one project at a time. Welcome to my digital garage.",
+      title: "bonfolio",
+      subtitle: "Crafting robust and elegant software solutions, one project at a time. Welcome to my digital workshop.",
     },
     about: {
-      name: "Andrew Braven",
+      name: "The Engineer",
       title: "About Me",
       description: [
-        "I'm a software engineer with a passion for building things from the ground up, much like a mechanic in a garage. My expertise lies in Java, backend systems, and network protocols. I thrive on dissecting complex problems and reassembling them into efficient, scalable, and secure applications.",
+        "I'm a software engineer with a passion for building things from the ground up, much like a mechanic in a garage. My expertise lies in backend systems, and network protocols. I thrive on dissecting complex problems and reassembling them into efficient, scalable, and secure applications.",
         "This portfolio is my \"workshop,\" where I showcase my \"builds\" (projects) and the \"tools\" (skills) I use. Take a look around, and feel free to get in touch!",
       ],
     },
@@ -29,4 +29,8 @@ export const siteContent = {
     title: "The Blueprints",
     subtitle: "Thoughts on software, technology, and the craft of engineering. Coming soon!",
   },
+  jobInsightsPage: {
+    title: "Automated Job Application Insights",
+    subtitle: "Paste your resume and a job posting to get AI-powered insights on how to improve your application."
+  }
 };
