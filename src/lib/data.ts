@@ -65,5 +65,19 @@ export const projects: Project[] = [
       chassis: 'TailwindCSS, shadcn/ui',
     },
     githubUrl: '#',
+  },
+  {
+    id: 'api-gateway',
+    title: 'Cloud API Gateway',
+    description: 'A resilient and scalable API Gateway built with Spring Cloud Gateway, handling routing, rate limiting, and authentication for microservices.',
+    image: getImage('project-car-4'),
+    tags: ['Java', 'Spring Cloud', 'Microservices', 'API'],
+    specs: {
+        engine: 'Spring Cloud Gateway',
+        transmission: 'WebFlux, Reactive Programming',
+        ecu: 'JWT Authentication, Resilience4j',
+        chassis: 'Service Discovery with Eureka',
+    },
+    githubUrl: '#',
   }
 ];

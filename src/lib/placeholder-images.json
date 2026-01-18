@@ -17,6 +17,12 @@
       "description": "A futuristic electric car concept",
       "imageUrl": "https://images.unsplash.com/photo-1669504702641-8f12e9036354?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmdXR1cmlzdGljJTIwY2FyfGVufDB8fHx8MTc2ODc2NzcxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "futuristic car"
+    },
+    {
+      "id": "project-car-4",
+      "description": "A rugged off-road vehicle",
+      "imageUrl": "https://images.unsplash.com/photo-1549317336-206569e84754?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxydWdnZWQlMjBvZmYtcm9hZCUyMHZlaGljbGV8ZW58MHx8fHwxNzY4NzY4MjU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "off-road vehicle"
     }
   ]
 }

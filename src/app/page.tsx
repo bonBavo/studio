@@ -1,13 +1,12 @@
 import MainLayout from '@/components/layout/MainLayout';
 import { Button } from '@/components/ui/button';
-import { projects, skills } from '@/lib/data';
-import ProjectCard from '@/components/ProjectCard';
+import { skills } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lightbulb, Wrench, Briefcase } from 'lucide-react';
 import Link from 'next/link';
+import { siteContent } from '@/lib/content';
 
 export default function Home() {
-  const featuredProjects = projects.slice(0, 3);
 
   return (
     <MainLayout>
@@ -15,14 +14,14 @@ export default function Home() {
       <section className="text-center py-20 md:py-32 bg-background">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-headline font-bold bg-clip-text text-transparent bg-gradient-to-b from-foreground to-muted-foreground">
-            Engineer's Workshop
+            {siteContent.home.hero.title}
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
-            Crafting robust and elegant software solutions, one project at a time. Welcome to my digital garage.
+            {siteContent.home.hero.subtitle}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button asChild size="lg">
-              <Link href="/#projects">View Projects</Link>
+              <Link href="/projects">View Projects</Link>
             </Button>
             <Button variant="secondary" size="lg" asChild>
               <Link href="/job-insights">AI Job Helper</Link>
@@ -38,12 +37,11 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="font-headline text-3xl flex items-center gap-3">
                 <Lightbulb className="w-8 h-8 text-primary" />
-                About Me: Andrew Braven
+                {siteContent.home.about.title}: {siteContent.home.about.name}
               </CardTitle>
             </CardHeader>
             <CardContent className="text-muted-foreground space-y-4 text-base">
-              <p>I'm a software engineer with a passion for building things from the ground up, much like a mechanic in a garage. My expertise lies in Java, backend systems, and network protocols. I thrive on dissecting complex problems and reassembling them into efficient, scalable, and secure applications.</p>
-              <p>This portfolio is my "workshop," where I showcase my "builds" (projects) and the "tools" (skills) I use. Take a look around, and feel free to get in touch!</p>
+              {siteContent.home.about.description.map((p, i) => <p key={i}>{p}</p>)}
             </CardContent>
           </Card>
         </div>
@@ -54,9 +52,9 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Wrench className="mx-auto h-12 w-12 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-headline font-bold mt-4">The Toolkit</h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold mt-4">{siteContent.home.skills.title}</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              The primary technologies and tools I use to bring ideas to life.
+              {siteContent.home.skills.subtitle}
             </p>
           </div>
           <div className="max-w-4xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 md:gap-8">
@@ -77,15 +75,15 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Briefcase className="mx-auto h-12 w-12 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-headline font-bold mt-4">Featured Builds</h2>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold mt-4">{siteContent.home.projects.title}</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              A few of the "cars" currently in the garage.
+              {siteContent.home.projects.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map(project => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+          <div className="text-center">
+            <Button asChild size="lg">
+                <Link href="/projects">Explore All Projects</Link>
+            </Button>
           </div>
         </div>
       </section>

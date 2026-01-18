@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Wrench, Github, Sparkles } from 'lucide-react';
+import { Wrench, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { navLinks } from '@/lib/routes';
 
 export default function Header() {
   return (
@@ -10,13 +11,18 @@ export default function Header() {
           <Wrench className="text-primary group-hover:rotate-[-15deg] transition-transform" />
           <span className="text-xl font-headline font-bold">Engineer's Workshop</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <Link href="/#projects" className="text-muted-foreground hover:text-primary transition-colors">Projects</Link>
-          <Link href="/#skills" className="text-muted-foreground hover:text-primary transition-colors">Skills</Link>
-          <Link href="/job-insights" className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors">
-            <Sparkles className="w-4 h-4 text-primary/80" />
-            Job Insights
-          </Link>
+        <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
+          {navLinks.map((link) => {
+            if (link.name === 'Home') return null;
+            return (
+                <Button variant="ghost" asChild key={link.path}>
+                    <Link href={link.path} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors px-3">
+                        <link.icon className="w-4 h-4 text-primary/80" />
+                        {link.name}
+                    </Link>
+                </Button>
+            )
+          })}
         </nav>
         <div className="flex items-center gap-4">
           <Button variant="outline" size="sm" asChild>

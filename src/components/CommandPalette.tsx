@@ -3,21 +3,14 @@
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
-  File,
-  Home,
-  Briefcase,
-  Wrench,
-  Sparkles,
-} from 'lucide-react';
-import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from '@/components/ui/command';
+import { navLinks } from '@/lib/routes';
 
 export default function CommandPalette() {
   const [open, setOpen] = React.useState(false);
@@ -54,22 +47,12 @@ export default function CommandPalette() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Navigation">
-            <CommandItem onSelect={() => runCommand(() => router.push('/'))}>
-              <Home className="mr-2 h-4 w-4" />
-              <span>Home</span>
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => router.push('/#projects'))}>
-              <Briefcase className="mr-2 h-4 w-4" />
-              <span>Projects</span>
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => router.push('/#skills'))}>
-              <Wrench className="mr-2 h-4 w-4" />
-              <span>Skills</span>
-            </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => router.push('/job-insights'))}>
-              <Sparkles className="mr-2 h-4 w-4" />
-              <span>Job Insights AI</span>
-            </CommandItem>
+            {navLinks.map((link) => (
+              <CommandItem key={link.path} onSelect={() => runCommand(() => router.push(link.path))}>
+                <link.icon className="mr-2 h-4 w-4" />
+                <span>{link.name}</span>
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
