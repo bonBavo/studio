@@ -1,6 +1,44 @@
 import { Cog, Database, GitBranch, Globe, Network, Server, ShieldCheck, Smartphone, Wind, Type, Monitor } from 'lucide-react';
 import type { Project } from '@/components/ProjectCard';
-import { PlaceHolderImages } from './placeholder-images';
+
+const placeholderData = {
+  "placeholderImages": [
+    {
+      "id": "project-car-1",
+      "description": "A modern Dodge Challenger sports car",
+      "imageUrl": "https://images.unsplash.com/photo-1616789916143-796d5a806911?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxEb2RnZSUyMENoYWxsZW5nZXJ8ZW58MHx8fHwxNzE2NDk1NzU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Dodge Challenger"
+    },
+    {
+      "id": "project-car-2",
+      "description": "A classic Dodge Charger muscle car",
+      "imageUrl": "https://images.unsplash.com/photo-1599550992089-feb235029676?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwZG9kZ2UlMjBjaGFyZ2VyfGVufDB8fHx8MTcxNjQ5NTgzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Dodge Charger"
+    },
+    {
+      "id": "project-car-3",
+      "description": "A red Dodge Viper sports car",
+      "imageUrl": "https://images.unsplash.com/photo-1610269934149-6f17c6114a5b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBkb2RnZSUyMHZpcGVyfGVufDB8fHx8MTcxNjQ5NTk1MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Dodge Viper"
+    },
+    {
+      "id": "project-car-4",
+      "description": "A rugged Ram Rebel off-road truck",
+      "imageUrl": "https://images.unsplash.com/photo-1632705126610-b969e7b2f6e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxSYW0lMjB0cnVjayUyMG9mZnJvYWR8ZW58MHx8fHwxNzE2NDk2MDExfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Ram truck"
+    }
+  ]
+};
+
+type ImagePlaceholder = {
+  id: string;
+  description: string;
+  imageUrl: string;
+  imageHint: string;
+};
+
+const PlaceHolderImages: ImagePlaceholder[] = placeholderData.placeholderImages;
+
 
 const getImage = (id: string) => {
     const image = PlaceHolderImages.find(img => img.id === id);
