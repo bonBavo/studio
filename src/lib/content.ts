@@ -32,5 +32,9 @@ export const siteContent = {
   jobInsightsPage: {
     title: "Automated Job Application Insights",
     subtitle: "Paste your resume and a job posting to get AI-powered insights on how to improve your application."
+  },
+  apiExamplePage: {
+    title: "API Integration Guide",
+    subtitle: "An example of how to fetch data from a backend API (like a Spring Boot application) within a Next.js client component."
   }
 };

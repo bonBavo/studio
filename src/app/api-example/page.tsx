@@ -1,64 +1,100 @@
+
+'use client';
+
+import MainLayout from '@/components/layout/MainLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { siteContent } from '@/lib/content';
+import { Code } from 'lucide-react';
+import CodeBlock from '@/components/CodeBlock';
+
+const reactCode = `
 'use client';
 
 import { useState, useEffect } from 'react';
-import MainLayout from '@/components/layout/MainLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader2 } from 'lucide-react';
 
-export default function ApiExamplePage() {
-  const [data, setData] = useState<{ message: string } | null>(null);
+type SpringResponse = {
+  id: number;
+  content: string;
+  // Add other fields from your Spring Boot response
+};
+
+export default function DataFetcher() {
+  const [data, setData] = useState<SpringResponse[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchDataFromSpring() {
       try {
         setLoading(true);
-        const response = await fetch('/api/hello');
+        // IMPORTANT: Replace with your actual Spring Boot API endpoint
+        const apiEndpoint = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/items';
+        
+        const response = await fetch(apiEndpoint);
+        
         if (!response.ok) {
-          throw new Error('Failed to fetch data from the API.');
+          throw new Error(\`HTTP error! status: \${response.status}\`);
         }
-        const result = await response.json();
+
+        const result: SpringResponse[] = await response.json();
         setData(result);
+
       } catch (e: any) {
         setError(e.message);
+
       } finally {
         setLoading(false);
       }
     }
 
-    fetchData();
-  }, []);
+    fetchDataFromSpring();
+  }, []); // Empty dependency array ensures this effect runs only once on mount
 
+  if (loading) {
+    return <div>Loading data from Spring Boot backend...</div>;
+  }
+
+  if (error) {
+    return <div>Error fetching data: {error}</div>;
+  }
+
+  return (
+    <div>
+      <h1>Data from Spring Boot</h1>
+      {data && data.length > 0 ? (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      ) : (
+        <p>No data found or returned from the API.</p>
+      )}
+    </div>
+  );
+}
+`.trim();
+
+export default function ApiExamplePage() {
   return (
     <MainLayout>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-headline font-bold mt-4">API Fetching Example</h1>
+            <Code className="mx-auto h-12 w-12 text-primary" />
+            <h1 className="text-4xl font-headline font-bold mt-4">{siteContent.apiExamplePage.title}</h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              This page demonstrates how to fetch data from a backend API route in a client component.
+              {siteContent.apiExamplePage.subtitle}
             </p>
           </div>
           <Card>
             <CardHeader>
-              <CardTitle>API Response</CardTitle>
+              <CardTitle>React Client Component Example</CardTitle>
             </CardHeader>
             <CardContent>
-              {loading && (
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  <span>Loading data from API...</span>
-                </div>
-              )}
-              {error && (
-                <p className="text-destructive">Error: {error}</p>
-              )}
-              {data && !loading && (
-                <pre className="bg-muted p-4 rounded-md text-muted-foreground font-code">
-                  <code>{JSON.stringify(data, null, 2)}</code>
-                </pre>
-              )}
+              <p className="mb-4 text-muted-foreground">
+                Here’s an example of a React client component that fetches data from an external backend, like a Spring Boot application. You can copy and adapt this code to fit your specific API endpoints and data structures.
+              </p>
+              <p className="mb-4 text-sm text-muted-foreground">
+                For this to work, ensure your Spring application has CORS configured to allow requests from your Next.js application's domain. It's also a good practice to use environment variables for your API URL.
+              </p>
+              <CodeBlock code={reactCode} />
             </CardContent>
           </Card>
         </div>
