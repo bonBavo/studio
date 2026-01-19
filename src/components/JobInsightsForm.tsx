@@ -1,11 +1,10 @@
 'use client';
 
-import { useFormStatus } from 'react-dom';
 import { getJobApplicationInsights } from '@/app/job-insights/actions';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardTitle } from '@/components/ui/card';
-import { Loader2, ListChecks, BrainCircuit, Target, BookOpen } from 'lucide-react';
+import { ListChecks, BrainCircuit, Target, BookOpen } from 'lucide-react';
 import { useActionState, useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
@@ -17,10 +16,9 @@ const initialState = {
 };
 
 function SubmitButton() {
-  const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full" size="lg">
-      {pending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Analyzing...</> : 'Get Insights'}
+    <Button type="submit" disabled className="w-full" size="lg">
+      Coming Soon
     </Button>
   );
 }
@@ -55,6 +53,7 @@ export default function JobInsightsForm() {
                 className="min-h-[300px] bg-background text-base"
                 rows={15}
                 required
+                disabled
               />
               <Textarea
                 name="jobPostingData"
@@ -62,6 +61,7 @@ export default function JobInsightsForm() {
                 className="min-h-[300px] bg-background text-base"
                 rows={15}
                 required
+                disabled
               />
             </div>
             <SubmitButton />
