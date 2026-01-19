@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Zap, Github, Menu } from 'lucide-react';
+import { Zap, Github, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { navLinks } from '@/lib/routes';
 import { ThemeToggle } from '../ThemeToggle';
@@ -13,9 +13,11 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
+import * as React from 'react';
 
 export default function Header() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
     <header className="py-4 border-b border-border/40 sticky top-0 bg-background/80 backdrop-blur-sm z-40">
@@ -63,11 +65,12 @@ export default function Header() {
 
             {/* Mobile Navigation */}
             <div className="md:hidden">
-                <Sheet>
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
-                    <Button variant="outline" size="icon">
-                    <Menu className="h-5 w-5" />
-                    <span className="sr-only">Open Menu</span>
+                    <Button variant="ghost" size="icon" className="relative">
+                      <Menu className={cn("h-5 w-5 transition-all", isMobileMenuOpen ? "rotate-90 scale-0" : "rotate-0 scale-100")} />
+                      <X className={cn("absolute h-5 w-5 transition-all", isMobileMenuOpen ? "rotate-0 scale-100" : "rotate-90 scale-0")} />
+                      <span className="sr-only">Open Menu</span>
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
