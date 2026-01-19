@@ -1,12 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import { Zap, Github } from 'lucide-react';
+import { Zap, Github, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { navLinks } from '@/lib/routes';
 import { ThemeToggle } from '../ThemeToggle';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 
 export default function Header() {
   const pathname = usePathname();
@@ -18,6 +24,8 @@ export default function Header() {
           <Zap className="text-primary group-hover:rotate-[-15deg] transition-transform" />
           <span className="text-xl font-headline font-bold">Braven Performance</span>
         </Link>
+
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
           {navLinks.map((link) => {
             if (link.name === 'Home') return null;
@@ -40,14 +48,73 @@ export default function Header() {
             );
           })}
         </nav>
+        
         <div className="flex items-center gap-4">
-          <Button variant="outline" size="sm" asChild>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <Github className="h-4 w-4 mr-2" />
-              GitHub
-            </a>
-          </Button>
-          <ThemeToggle />
+            {/* Desktop Buttons */}
+            <div className="hidden md:flex items-center gap-4">
+                <Button variant="outline" size="sm" asChild>
+                    <a href="https://github.com/bonBavo" target="_blank" rel="noopener noreferrer">
+                    <Github className="h-4 w-4 mr-2" />
+                    GitHub
+                    </a>
+                </Button>
+                <ThemeToggle />
+            </div>
+
+            {/* Mobile Navigation */}
+            <div className="md:hidden">
+                <Sheet>
+                <SheetTrigger asChild>
+                    <Button variant="outline" size="icon">
+                    <Menu className="h-5 w-5" />
+                    <span className="sr-only">Open Menu</span>
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                    <div className="py-6">
+                        <SheetClose asChild>
+                          <Link href="/" className="flex items-center gap-2 mb-8">
+                              <Zap className="text-primary" />
+                              <span className="text-xl font-headline font-bold">Braven Performance</span>
+                          </Link>
+                        </SheetClose>
+                        <nav className="flex flex-col gap-4">
+                        {navLinks.map((link) => {
+                            const isActive = link.path === '/' 
+                                ? pathname === '/'
+                                : link.path.startsWith('/#')
+                                    ? pathname === '/'
+                                    : pathname.startsWith(link.path);
+                            
+                            return (
+                            <SheetClose asChild key={link.path}>
+                                <Link
+                                href={link.path}
+                                className={cn(
+                                    'flex items-center gap-3 p-3 rounded-md text-lg font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-primary',
+                                    isActive && 'font-bold text-primary bg-muted'
+                                )}
+                                >
+                                <link.icon className="h-5 w-5" />
+                                {link.name}
+                                </Link>
+                            </SheetClose>
+                            );
+                        })}
+                        </nav>
+                        <div className="mt-8 pt-6 border-t border-border/40 flex items-center gap-4">
+                            <Button variant="outline" className="w-full" asChild>
+                                <a href="https://github.com/bonBavo" target="_blank" rel="noopener noreferrer">
+                                <Github className="h-4 w-4 mr-2" />
+                                GitHub
+                                </a>
+                            </Button>
+                            <ThemeToggle />
+                        </div>
+                    </div>
+                </SheetContent>
+                </Sheet>
+            </div>
         </div>
       </div>
     </header>
