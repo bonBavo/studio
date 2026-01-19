@@ -23,14 +23,14 @@ export default function Header() {
             if (link.name === 'Home') return null;
             const isActive = link.path.startsWith('/#') 
               ? pathname === '/'
-              : pathname === link.path;
+              : pathname.startsWith(link.path);
             
             return (
               <Link
                 key={link.path}
                 href={link.path}
                 className={cn(
-                  'flex items-center gap-2 rounded-md px-3 py-2 text-muted-foreground transition-all duration-200 hover:scale-110 hover:text-primary',
+                  'flex items-center gap-2 p-2 text-muted-foreground transition-all duration-200 hover:scale-110 hover:text-primary',
                   isActive && 'font-bold text-primary'
                 )}
               >

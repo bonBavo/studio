@@ -11,15 +11,15 @@ export default function Home() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="text-center py-20 md:py-32 bg-background">
+      <section className="text-center py-20 md:py-32 bg-background animate-in fade-in duration-500">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-headline font-bold bg-clip-text text-transparent bg-gradient-to-b from-foreground to-muted-foreground">
             {siteContent.home.hero.title}
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground">
+          <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground animate-in fade-in slide-in-from-bottom-8 duration-700 [animation-delay:200ms]">
             {siteContent.home.hero.subtitle}
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-700 [animation-delay:400ms]">
             <Button asChild size="lg">
               <Link href="/projects">View Projects</Link>
             </Button>
@@ -31,7 +31,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 md:py-24 border-y border-border/50">
+      <section id="about" className="py-16 md:py-24 border-y border-border/50 animate-in fade-in slide-in-from-bottom-8 duration-700 [animation-delay:600ms]">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto bg-card/50 border-border/50 shadow-lg">
             <CardHeader>
@@ -48,7 +48,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-16 md:py-24">
+      <section id="skills" className="py-16 md:py-24 animate-in fade-in slide-in-from-bottom-8 duration-700 [animation-delay:800ms]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Wrench className="mx-auto h-12 w-12 text-primary" />
@@ -71,7 +71,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-16 md:py-24 border-y border-border/50 bg-card/30">
+      <section id="projects" className="py-16 md:py-24 border-y border-border/50 bg-card/30 animate-in fade-in slide-in-from-bottom-8 duration-700 [animation-delay:1000ms]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <Briefcase className="mx-auto h-12 w-12 text-primary" />
