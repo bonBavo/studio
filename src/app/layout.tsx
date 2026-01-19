@@ -6,8 +6,8 @@ import { siteContent } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: {
-    default: "bonfolio",
-    template: `%s | bonfolio`,
+    default: "Braven Performance",
+    template: `%s | Braven Performance`,
   },
   description: siteContent.home.hero.subtitle,
 };

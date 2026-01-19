@@ -1,7 +1,7 @@
 export const siteContent = {
   home: {
     hero: {
-      title: "bonfolio",
+      title: "Braven Performance",
       subtitle: "Crafting robust and elegant software solutions, one project at a time. Welcome to my digital workshop.",
     },
     about: {
